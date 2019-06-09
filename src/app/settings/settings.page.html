@@ -1,0 +1,21 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>
+            Settings
+        </ion-title>
+      </ion-toolbar>  
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="stacked">Address</ion-label>
+    <ion-input type="text" name="address" [(ngModel)]="settingsService.Address"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="stacked">Port</ion-label>
+    <ion-input type="number" inputmode="numeric" name="port" [(ngModel)]="settingsService.Port"></ion-input>
+  </ion-item>
+</ion-content>

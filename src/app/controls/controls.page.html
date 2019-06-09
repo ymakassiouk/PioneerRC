@@ -1,0 +1,47 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>
+        Pioneer RC
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button expand="block" (click)="clickOn($event)">On</ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+          <ion-col>
+            <ion-button expand="block" (click)="clickOff($event)">Off</ion-button>
+          </ion-col>
+        </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button color="secondary" (click)="clickVolumeDown($event)" expand="block">Vol-</ion-button>
+        </ion-col>
+        <ion-col>
+            <ion-button color="secondary" (click)="clickVolumeUp($event)" expand="block">Vol+</ion-button>
+          </ion-col>
+      </ion-row>
+      <ion-row>
+          <ion-col>
+            <ion-button expand="block" (click)="clickInput7($event)">Input HDMI 7</ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-item>
+            <ion-label name="info" position="stacked">Connecting to:</ion-label>
+            <ion-input value="{{settingsService.Address}}:{{settingsService.Port}}" readonly="yes"></ion-input>
+          </ion-item>
+          </ion-col>
+        </ion-row>
+    </ion-grid>
+    
+  </ion-content>
