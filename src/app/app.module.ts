@@ -14,6 +14,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { SocketIoModule, SocketIoConfig } from 'ng-socket-io';
 import { NetworkInterface } from '@ionic-native/network-interface/ngx';
 import { AppPreferences } from '@ionic-native/app-preferences/ngx';
+import { AvStateService } from './services/av-state.service';
 
 
 
@@ -33,6 +34,7 @@ import { AppPreferences } from '@ionic-native/app-preferences/ngx';
     NetworkInterface,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     AppPreferences,
+    AvStateService,
   ],
   bootstrap: [AppComponent]
 })

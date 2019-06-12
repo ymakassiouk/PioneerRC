@@ -3,6 +3,7 @@ import { NavController } from '@ionic/angular';
 
 import { NetworkInterface } from '@ionic-native/network-interface/ngx';
 import { SettingsService } from '../services/settings.service';
+import { AvStateService } from '../services/av-state.service';
 declare let Socket :any;
 
 function Utf8ArrayToStr(array) :string {
@@ -49,11 +50,16 @@ export class ControlsPage {
 
     socket :any;
 
-    constructor(public navCtrl: NavController, private networkInterface :NetworkInterface, private settingsService :SettingsService) { 
+    constructor(public navCtrl: NavController, 
+        private networkInterface :NetworkInterface, 
+        private settingsService :SettingsService,
+        private avState :AvStateService) 
+    { 
         if (typeof Socket === 'function') {
           this.socket = new Socket();
           this.socket.onData = this.socketOnData;
           this.socket.onClose = this.socketOnClose;
+          this.ensureSocketOpen();
         }
     }
 
@@ -71,24 +77,10 @@ export class ControlsPage {
     }
 
     private socketOnData(data) {
-        // VOL110 = 25.5dB
-        // VOL111 = 25.0dB
-
-
-        /*
-        Sending: PO
-
-controls-controls-module.js:154 received: PWR0
-
-controls-controls-module.js:154 received: LM0401
-AUA00000011000010110000010001111111111101000100000000
-AUB00011111111000101110011110111111111110111100000000
-LM0401
-LM0401
-FL022020202020205456202020202020
-FN05
-*/
-        console.log("received: " + Utf8ArrayToStr(data));
+        var sMessage :string;
+        sMessage = Utf8ArrayToStr(data);
+        this.avState.parseDeviceMessage(sMessage)
+        console.log("received: " + sMessage);
     }
 
     private ensureSocketOpen() {
@@ -146,6 +138,7 @@ FN05
 
     public clickVolumeUp(event) {
         this.sendToDevice("VU");
+        //this.avState.parseDeviceMessage("VOL100");
     }
 
     public clickInput7(event) {

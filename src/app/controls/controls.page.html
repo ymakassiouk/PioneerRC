@@ -37,9 +37,13 @@
         <ion-row>
           <ion-col>
             <ion-item>
-            <ion-label name="info" position="stacked">Connecting to:</ion-label>
-            <ion-input value="{{settingsService.Address}}:{{settingsService.Port}}" readonly="yes"></ion-input>
-          </ion-item>
+              <ion-label name="info" position="stacked">Connecting to:</ion-label>
+              <ion-input value="{{settingsService.Address}}:{{settingsService.Port}}" readonly="yes"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label position="stacked">Volume</ion-label>
+              <ion-input value="{{avState.Volume}}" readonly="yes"></ion-input>
+            </ion-item>
           </ion-col>
         </ion-row>
     </ion-grid>
